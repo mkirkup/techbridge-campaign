@@ -383,48 +383,35 @@
                     </div>
                 </section>
             `;
-            // Add form submission handler
+            // Add form submission handler with Formspree integration
             document.getElementById('contact-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // In a real implementation, you would collect the form data and send it
-                // via an API endpoint to send the email. For this example, we'll just show
-                // the success message.
+                // Create FormData object from the form
+                const formData = new FormData(this);
                 
-                // Collect form data
-                const formData = {
-                    fullName: document.getElementById('full-name').value,
-                    businessName: document.getElementById('business-name').value,
-                    phone: document.getElementById('phone').value,
-                    email: document.getElementById('email').value,
-                    recognition: document.getElementById('recognition').checked,
-                    communications: document.getElementById('communications').checked
-                };
-                
-                console.log('Form data:', formData);
-                
-                // Show success message
-                document.getElementById('success-message').style.display = 'block';
-                document.getElementById('contact-form').reset();
-                
-                // In a real implementation, you would send this data to your backend:
-                // 
-                // fetch('/api/submit-form', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(formData)
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     document.getElementById('success-message').style.display = 'block';
-                //     document.getElementById('contact-form').reset();
-                // })
-                // .catch(error => {
-                //     console.error('Error:', error);
-                //     alert('There was an error submitting the form. Please try again.');
-                // });
+                // Send to Formspree
+                fetch('https://formspree.io/f/mgvallbq', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        document.getElementById('success-message').style.display = 'block';
+                        document.getElementById('contact-form').reset();
+                        window.scrollTo(0, 0); // Scroll to top to see success message
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                });
             });
         } else {
             // Show the home page content
