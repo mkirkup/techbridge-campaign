@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge - House of Friendship</title>
+    <style>
+        :root {
+            --primary: #4285F4;
+            --secondary: #34A853;
+            --accent: #FBBC05;
+            --dark: #333;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2d8f47;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .social-post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-post h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .hashtags {
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .disclaimer {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+        }
+        
+        #success-message {
+            display: none;
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+            
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">TechBridge</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="form.html">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="page-content"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 House of Friendship. All rights reserved.</p>
+                <p>Together, we can empower our community and transform lives.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Determine which page to show based on URL
+        const path = window.location.pathname;
+        if (path.includes('form.html')) {
+            document.getElementById('page-content').innerHTML = `
+                <section>
+                    <div class="container">
+                        <h2>Donate Your Technology</h2>
+                        <div class="form-container">
+                            <div id="success-message">
+                                Thank you for your submission! A member of the House of Friendship team will be in touch with you shortly.
+                            </div>
+                            <form id="contact-form">
+                                <div class="form-group">
+                                    <label for="full-name">Full Name *</label>
+                                    <input type="text" id="full-name" name="full-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="business-name">Business Name *</label>
+                                    <input type="text" id="business-name" name="business-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="recognition" name="recognition">
+                                    <label for="recognition">I would like to be publicly recognized for my donation</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="communications" name="communications">
+                                    <label for="communications">I would like to receive communications from House of Friendship such as updates, newsletters, and opportunities to get involved in other ways</label>
+                                </div>
+                                <div class="disclaimer">
+                                    <p><strong>Disclaimer:</strong> We are grateful for your support in helping us serve the community. Should you choose to donate technology devices to Sunnydale and Courtland-Shelley Community Centres, you will be responsible for ensuring all data is removed from the devices before donation. While we will perform a factory reset where appropriate, House of Friendship and Mike Kirkup are not liable for any data left on the device.</p>
+                                    <p>We will provide a checklist to help you fully wipe the device before donation. By donating, you acknowledge that you are responsible for data removal and that, once donated, the devices will become the property of House of Friendship.</p>
+                                </div>
+                                <button type="submit" class="btn btn-secondary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            `;
+            // Add form submission handler
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real implementation, you would collect the form data and send it
+                // via an API endpoint to send the email. For this example, we'll just show
+                // the success message.
+                
+                // Collect form data
+                const formData = {
+                    fullName: document.getElementById('full-name').value,
+                    businessName: document.getElementById('business-name').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    recognition: document.getElementById('recognition').checked,
+                    communications: document.getElementById('communications').checked
+                };
+                
+                console.log('Form data:', formData);
+                
+                // Show success message
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('contact-form').reset();
+                
+                // In a real implementation, you would send this data to your backend:
+                // 
+                // fetch('/api/submit-form', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(formData)
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     document.getElementById('success-message').style.display = 'block';
+                //     document.getElementById('contact-form').reset();
+                // })
+                // .catch(error => {
+                //     console.error('Error:', error);
+                //     alert('There was an error submitting the form. Please try again.');
+                // });
+            });
+        } else {
+            // Show the home page content
+            document.getElementById('page-content').innerHTML = `
+                <div class="hero">
+                    <div class="container">
+                        <h1>Empowering your Community Through Technology</h1>
+                        <p>Together, we can bridge the digital divide and transform lives in the Waterloo Region.</p>
+                        <a href="form.html" class="btn">Donate Now</a>
+                    </div>
+                </div>
+
+                <section>
+                    <div class="container">
+                        <div class="text-block">
+                            <p>Each year, thousands of community members in Waterloo Region receive care and support through a wide range of House of Friendship programs that help families living on low income, whether it is after-school programming, community support groups, or summer camp sponsorship. These community programs serve seven prioritized, low-income neighborhoods, providing an opportunity for belonging and connection for people of all ages. Among these resources are desktop and portable computers, essential tools for updating resumes, searching for affordable housing, and completing school assignments. However, the outdated technology at Sunnydale and Courtland-Shelley community centres limits access and progress for many.</p>
+                        </div>
+                        
+                        <h2>We Need Your Help to Make a Change!</h2>
+                        <div class="text-block">
+                            <p>We're inviting you to partner with us in bridging the digital divide by donating your decommissioned laptops and tablets. With your support, we can provide our community with the updated tools they need to succeed and reach their full potential. You can foster opportunities for students, youth, and families to thrive in a digital world!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section style="background-color: #f0f5ff;">
+                    <div class="container">
+                        <h2>How You Can Help</h2>
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <p>Fill out the contact form with your information and a member of the House of Friendship team will be in touch with you shortly.</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <p>A member of the House of Friendship team will provide more information on how to donate laptops and tablets to help community members access essential resources.</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <p>Spread the word about how partners in the local tech industry can join a growing movement of local leaders supporting technology access for low-income neighborhoods.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="form.html" class="btn">Donate Now</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <h2>Making a Difference</h2>
+                        <div class="gallery">
+                            <div class="gallery-item">
+                                <img src="/api/placeholder/400/300" alt="Community members using computers">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="/api/placeholder/400/300" alt="Student working on homework">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="/api/placeholder/400/300" alt="Community center activities">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section style="background-color: #f0f5ff;">
+                    <div class="container">
+                        <h2>Spread the Word</h2>
+                        <div class="social-post">
+                            <h3>Support Local Communities with Tech Donations!</h3>
+                            <p>Thousands of community members in Waterloo Region rely on technology to improve their lives -- from job searches to homework. But outdated devices at Sunnydale and Courtland-Shelley community centers limit access to these critical tools. We need your help! Donate your decommissioned laptops or tablets today and empower our neighbors to succeed.</p>
+                            <p>Join us in reaching our goal and make a lasting impact on local youth and families!</p>
+                            <p class="hashtags">#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange</p>
+                        </div>
+                        <div class="social-post">
+                            <h3>Outdated Technology = Missed Opportunities</h3>
+                            <p>At the Sunnydale and Courtland-Shelley community centres, youth are sharing outdated computers, slowing down their work and limiting their learning. We're looking for technology leaders like YOU to help us reach our goal provide 50 updated laptops and tablets to ensure every student has the tools they need to succeed.</p>
+                            <p>Donate today and help make technology accessible for all!</p>
+                            <p class="hashtags">#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange</p>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+    </script>
+</body>
+</html>
