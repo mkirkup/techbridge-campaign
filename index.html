@@ -6,11 +6,12 @@
     <title>TechBridge - House of Friendship</title>
     <style>
         :root {
-            --primary: #4285F4;
-            --secondary: #34A853;
-            --accent: #FBBC05;
-            --dark: #333;
-            --light: #f8f9fa;
+            /* House of Friendship actual colors from their website */
+            --primary: #952D32; /* Burgundy red */
+            --secondary: #004165; /* Deep blue */
+            --accent: #F5F5F5; /* Light gray */
+            --dark: #333333; /* Dark gray for text */
+            --light: #F8F8F8; /* Light background */
         }
         
         * {
@@ -83,13 +84,23 @@
         
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: white;
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .hero-questions {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+        }
+        
+        .hero-questions p {
+            margin-bottom: 0.8rem;
         }
         
         .btn {
@@ -104,7 +115,7 @@
         }
         
         .btn:hover {
-            background-color: #3367d6;
+            background-color: #7f2429; /* Darker burgundy */
         }
         
         .btn-secondary {
@@ -112,7 +123,7 @@
         }
         
         .btn-secondary:hover {
-            background-color: #2d8f47;
+            background-color: #003050; /* Darker blue */
         }
         
         section {
@@ -275,6 +286,23 @@
             margin: 0 auto;
         }
         
+        .impact-stat {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -418,26 +446,39 @@
             document.getElementById('page-content').innerHTML = `
                 <div class="hero">
                     <div class="container">
-                        <h1>Empowering your Community Through Technology</h1>
-                        <p>Together, we can bridge the digital divide and transform lives in the Waterloo Region.</p>
-                        <a href="form.html" class="btn">Donate Now</a>
+                        <h1>Bridge the Digital Divide</h1>
+                        <div class="hero-questions">
+                            <p>Do you have laptops or tablets gathering dust in your office?</p>
+                            <p>Did you know that many families in Waterloo Region have no access to a computer at all?</p>
+                            <p>Your unused technology could transform someone's life today.</p>
+                        </div>
+                        <a href="form.html" class="btn">Donate Your Devices</a>
                     </div>
                 </div>
 
                 <section>
                     <div class="container">
+                        <h2>The Technology Gap in Our Community</h2>
                         <div class="text-block">
-                            <p>Each year, thousands of community members in Waterloo Region receive care and support through a wide range of House of Friendship programs that help families living on low income, whether it is after-school programming, community support groups, or summer camp sponsorship. These community programs serve seven prioritized, low-income neighborhoods, providing an opportunity for belonging and connection for people of all ages. Among these resources are desktop and portable computers, essential tools for updating resumes, searching for affordable housing, and completing school assignments. However, the outdated technology at Sunnydale and Courtland-Shelley community centres limits access and progress for many.</p>
+                            <p>In today's digital world, technology isn't a luxury—it's essential for education, employment, and connecting with vital services. Yet for many families in Waterloo Region, a computer remains out of reach.</p>
+                            <p>At Sunnydale and Courtland-Shelley community centres, outdated and shared computers limit opportunities for youth and families trying to complete homework, search for jobs, or access important resources. The technology gap creates real barriers to success.</p>
+                            <p>That's where your unused technology can make a difference. The laptop sitting in your storage closet could be the tool that helps a student excel in school or helps a parent find employment.</p>
                         </div>
                         
-                        <h2>We Need Your Help to Make a Change!</h2>
+                        <div class="impact-stat">
+                            <span class="stat-number">50</span>
+                            <span class="stat-label">Devices needed to make a difference</span>
+                        </div>
+                        
+                        <h2>Your Donation Creates Opportunity</h2>
                         <div class="text-block">
-                            <p>We're inviting you to partner with us in bridging the digital divide by donating your decommissioned laptops and tablets. With your support, we can provide our community with the updated tools they need to succeed and reach their full potential. You can foster opportunities for students, youth, and families to thrive in a digital world!</p>
+                            <p>We're inviting you to partner with us in bridging the digital divide by donating your decommissioned laptops and tablets. With your support, we can provide our community with the updated tools they need to succeed and reach their full potential.</p>
+                            <p>Every device donated means one more person has access to the digital world — for homework, job searches, housing applications, and staying connected to essential services.</p>
                         </div>
                     </div>
                 </section>
 
-                <section style="background-color: #f0f5ff;">
+                <section style="background-color: var(--accent);">
                     <div class="container">
                         <h2>How You Can Help</h2>
                         <div class="steps">
@@ -447,7 +488,7 @@
                             </div>
                             <div class="step">
                                 <div class="step-number">2</div>
-                                <p>A member of the House of Friendship team will provide more information on how to donate laptops and tablets to help community members access essential resources.</p>
+                                <p>A member of the House of Friendship team will provide information on how to prepare and donate your devices to help community members access essential resources.</p>
                             </div>
                             <div class="step">
                                 <div class="step-number">3</div>
@@ -455,29 +496,29 @@
                             </div>
                         </div>
                         <div style="text-align: center; margin-top: 2rem;">
-                            <a href="form.html" class="btn">Donate Now</a>
+                            <a href="form.html" class="btn">Donate Your Devices</a>
                         </div>
                     </div>
                 </section>
 
                 <section>
                     <div class="container">
-                        <h2>Making a Difference</h2>
+                        <h2>Making a Real Impact</h2>
                         <div class="gallery">
                             <div class="gallery-item">
-                                <img src="/api/placeholder/400/300" alt="Community members using computers">
+                                <img src="https://houseoffriendship.org/wp-content/uploads/2024/02/Community-Centre-Programs-2.jpg" alt="Community members using computers at House of Friendship">
                             </div>
                             <div class="gallery-item">
-                                <img src="/api/placeholder/400/300" alt="Student working on homework">
+                                <img src="https://houseoffriendship.org/wp-content/uploads/2024/02/Christmas-Hampers-1-2.jpg" alt="House of Friendship community support">
                             </div>
                             <div class="gallery-item">
-                                <img src="/api/placeholder/400/300" alt="Community center activities">
+                                <img src="https://houseoffriendship.org/wp-content/uploads/2024/02/Community-Centre-Programs-1-1.jpg" alt="Children at House of Friendship community center">
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section style="background-color: #f0f5ff;">
+                <section style="background-color: #FFF3EB;">
                     <div class="container">
                         <h2>Spread the Word</h2>
                         <div class="social-post">
