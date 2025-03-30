@@ -227,6 +227,22 @@
         
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-group.error input {
+            border-color: #d32f2f;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
         }
         
         label {
@@ -382,16 +398,18 @@
                                     <input type="text" id="full-name" name="full-name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="business-name">Business Name *</label>
-                                    <input type="text" id="business-name" name="business-name" required>
+                                    <label for="business-name">Business Name</label>
+                                    <input type="text" id="business-name" name="business-name">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone Number *</label>
                                     <input type="tel" id="phone" name="phone" required>
+                                    <div class="error-message">Please enter a valid phone number</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email Address *</label>
                                     <input type="email" id="email" name="email" required>
+                                    <div class="error-message">Please enter a valid email address</div>
                                 </div>
                                 <div class="checkbox-group">
                                     <input type="checkbox" id="recognition" name="recognition">
@@ -411,36 +429,72 @@
                     </div>
                 </section>
             `;
-            // Add form submission handler with Formspree integration
+            // Add form submission handler with Formspree integration and validation
             document.getElementById('contact-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Create FormData object from the form
-                const formData = new FormData(this);
-                
-                // Send to Formspree
-                fetch('https://formspree.io/f/mgvallbq', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Show success message
-                        document.getElementById('success-message').style.display = 'block';
-                        document.getElementById('contact-form').reset();
-                        window.scrollTo(0, 0); // Scroll to top to see success message
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was an error submitting the form. Please try again.');
-                });
+                // Run validation
+                if (validateForm()) {
+                    // Create FormData object from the form
+                    const formData = new FormData(this);
+                    
+                    // Send to Formspree
+                    fetch('https://formspree.io/f/mgvallbq', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            document.getElementById('success-message').style.display = 'block';
+                            document.getElementById('contact-form').reset();
+                            window.scrollTo(0, 0); // Scroll to top to see success message
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again.');
+                    });
+                }
             });
+            
+            // Form validation function
+            function validateForm() {
+                let isValid = true;
+                
+                // Validate email
+                const emailField = document.getElementById('email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailGroup = emailField.closest('.form-group');
+                
+                if (!emailPattern.test(emailField.value)) {
+                    emailGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    emailGroup.classList.remove('error');
+                }
+                
+                // Validate phone
+                const phoneField = document.getElementById('phone');
+                const phoneGroup = phoneField.closest('.form-group');
+                
+                // Remove all non-digit characters to check length
+                const phoneDigits = phoneField.value.replace(/\D/g, '');
+                
+                if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+                    phoneGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    phoneGroup.classList.remove('error');
+                }
+                
+                return isValid;
+            }
         } else {
             // Show the home page content
             document.getElementById('page-content').innerHTML = `
