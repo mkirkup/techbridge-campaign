@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TechBridge - House of Friendship</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #910048; /* Updated burgundy */
+            --secondary: #004165; /* Deep blue */
+            --accent: #F5F5F5; /* Light gray */
+            --dark: #333333; /* Dark gray for text */
+            --light: #F8F8F8; /* Light background */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #79003c; /* Darker burgundy */
+        }
+        
+        /* FAQ specific styles */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .faq-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-answer ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .community-centers {
+            margin-top: 1rem;
+        }
+        
+        .community-centers li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            font-weight: 500;
+        }
+        
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo"><img src="images/techbridge-symbol.png" alt="TechBridge Logo">TechBridge</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="form.html">Donate</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="faq-container">
+            <h1 class="page-title">Technology Donations – Frequently Asked Questions</h1>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will I receive a tax receipt?</div>
+                <div class="faq-answer">
+                    <p>Currently, House of Friendship is unable to provide a tax receipt for technology donations.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Where do I drop off donations?</div>
+                <div class="faq-answer">
+                    <p>You may drop off your devices at the following location:</p>
+                    <ul>
+                        <li>House of Friendship - 236 Victoria St N #3a, Kitchener, ON N2H 5C8</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What kinds of devices are you looking for?</div>
+                <div class="faq-answer">
+                    <p>We are currently accepting:</p>
+                    <ul>
+                        <li>Laptops</li>
+                        <li>Tablets</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Are there any requirements for the devices you accept?</div>
+                <div class="faq-answer">
+                    <p>Yes. We ask that devices:</p>
+                    <ul>
+                        <li>Are in working condition</li>
+                        <li>Include their power cords</li>
+                    </ul>
+                    <p>We are unable to accept broken or non-functional devices.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I donate desktop computers or accessories (e.g., keyboards, mice, monitors)?</div>
+                <div class="faq-answer">
+                    <p>At this time, we are focused on laptops and tablets due to space and mobility needs. If you have other technology you'd like to donate, please contact us first at <span class="contact-info">saraha@houseoffriendship.org</span>.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will my data be erased from the device?</div>
+                <div class="faq-answer">
+                    <p>We strongly encourage donors to erase all personal data before donating. We will erase the devices before deploying them and will not be held responsible for any personal information left on the device.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How will my donated device be used?</div>
+                <div class="faq-answer">
+                    <p>Your donation will be used in our community centres by individuals and families who face barriers to accessing technology. These devices support education, job searching, social connection, and access to essential services.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is there a deadline for donations?</div>
+                <div class="faq-answer">
+                    <p>There is no set deadline, but donations received before September 1, 2025 help us meet current community needs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I make a monetary donation instead?</div>
+                <div class="faq-answer">
+                    <p>Absolutely. Financial contributions help us purchase new devices and accessories and support digital literacy programming. You can make a financial donation to the House of Friendship.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Who can I contact with questions?</div>
+                <div class="faq-answer">
+                    <p>Please reach out to us at <span class="contact-info">saraha@houseoffriendship.org</span> with any questions or to discuss your donation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Once I submit the form, what happens?</div>
+                <div class="faq-answer">
+                    <p>Someone from House of Friendship will connect with you and support next steps.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How many community centres are there?</div>
+                <div class="faq-answer">
+                    <p>House of Friendship supports 7 community centres:</p>
+                    <ol class="community-centers">
+                        <li>Centreville Chicopee Community Centre – 141 Morgan Avenue, Kitchener, ON N2A 2M4</li>
+                        <li>Chandler Mowat Community Centre – 222 Chandler Drive, Kitchener, ON N2E 3L7</li>
+                        <li>Courtland Shelley Community Centre – 1064-G Courtland Avenue, Kitchener, ON N2C 1K6</li>
+                        <li>Forest Heights Community Centre – 1700 Queens Boulevard, Kitchener, ON N2H 3L6</li>
+                        <li>Kingsdale Community Centre – 72 Wilson Avenue, Kitchener, ON N2C 1G5</li>
+                        <li>Sunnydale Community Centre – 508-H Sunnydale Place, Waterloo, ON N2L 4T1</li>
+                        <li>Victoria Hills Community Centre – 10 Chopin Drive, Kitchener, ON N2M 2G2</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <a href="index.html" class="btn back-link">Back to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/techbridge-symbol.png" alt="TechBridge Logo" height="60">
+                </div>
+                <p>&copy; 2025 House of Friendship. All rights reserved.</p>
+                <p>Together, we can empower our community and transform lives.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
