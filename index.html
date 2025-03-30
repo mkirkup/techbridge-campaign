@@ -1,8 +1,4 @@
-.stat-description {
-            font-size: 1rem;
-            color: var(--dark);
-            margin-top: 0.5rem;
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -344,6 +340,12 @@
             font-size: 1.2rem;
         }
         
+        .stat-description {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -526,7 +528,7 @@
                 
                 return isValid;
             }
-        } else {
+        } else if (!path.includes('faq.html')) {
             // Show the home page content
             document.getElementById('page-content').innerHTML = `
                 <div class="hero">
