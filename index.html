@@ -1,14 +1,12 @@
-.donate-logo {
-            display: none; /* Hide this element since it's causing issues */
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechBridge - House of Friendship</title>
     <style>
+        /* Base styles */
         :root {
-            /* House of Friendship actual colors from their website */
             --primary: #910048; /* Updated burgundy */
             --secondary: #004165; /* Deep blue */
             --accent: #F5F5F5; /* Light gray */
@@ -36,6 +34,7 @@
             padding: 2rem 0;
         }
         
+        /* Header styles */
         header {
             background-color: white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -84,6 +83,7 @@
             color: var(--primary);
         }
         
+        /* Hero section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
             color: white;
@@ -112,6 +112,7 @@
             margin-bottom: 0.8rem;
         }
         
+        /* Button styles */
         .btn {
             display: inline-block;
             background-color: var(--primary);
@@ -135,6 +136,7 @@
             background-color: #003050; /* Darker blue */
         }
         
+        /* Section styles */
         section {
             padding: 4rem 0;
         }
@@ -151,6 +153,7 @@
             margin: 0 auto 2rem;
         }
         
+        /* Steps section */
         .steps {
             display: flex;
             flex-wrap: wrap;
@@ -182,6 +185,7 @@
             font-weight: bold;
         }
         
+        /* Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -206,6 +210,7 @@
             transform: scale(1.05);
         }
         
+        /* Social posts */
         .social-post {
             background-color: white;
             border-radius: 10px;
@@ -225,6 +230,7 @@
             margin-top: 1rem;
         }
         
+        /* Form styles */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -237,21 +243,6 @@
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
-        }
-        
-        .error-message {
-            color: #d32f2f;
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-        
-        .form-group.error input {
-            border-color: #d32f2f;
-        }
-        
-        .form-group.error .error-message {
-            display: block;
         }
         
         label {
@@ -298,6 +289,22 @@
             margin-bottom: 1.5rem;
         }
         
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-group.error input {
+            border-color: #d32f2f;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        /* Footer styles */
         footer {
             background-color: var(--dark);
             color: white;
@@ -315,6 +322,7 @@
             margin-bottom: 1.5rem;
         }
         
+        /* Stats */
         .impact-stat {
             text-align: center;
             margin: 3rem 0;
@@ -332,6 +340,7 @@
             font-size: 1.2rem;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -588,7 +597,7 @@
                     </div>
                 </section>
 
-                <section style="background-color: #FFF3EB;">
+                <section style="background-color: var(--accent);">
                     <div class="container">
                         <h2>Spread the Word</h2>
                         <div class="social-post">
