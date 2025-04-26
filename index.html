@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechBridge - House of Friendship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Base styles */
         :root {
@@ -89,6 +90,17 @@
             color: white;
             text-align: center;
             padding: 6rem 0;
+        }
+        
+        .hero-logo {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-logo img {
+            max-width: 300px;
+            height: auto;
         }
         
         .hero h1 {
@@ -346,6 +358,81 @@
             margin-top: 0.5rem;
         }
         
+        /* Social share buttons */
+        .social-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn i {
+            margin-right: 8px;
+        }
+        
+        .social-btn.facebook {
+            background-color: #3b5998;
+        }
+        
+        .social-btn.facebook:hover {
+            background-color: #2d4373;
+        }
+        
+        .social-btn.twitter {
+            background-color: #1da1f2;
+        }
+        
+        .social-btn.twitter:hover {
+            background-color: #0c85d0;
+        }
+        
+        .social-btn.linkedin {
+            background-color: #0077b5;
+        }
+        
+        .social-btn.linkedin:hover {
+            background-color: #005582;
+        }
+        
+        .social-btn.copy {
+            background-color: #6c757d;
+        }
+        
+        .social-btn.copy:hover {
+            background-color: #5a6268;
+        }
+        
+        /* Copy success message */
+        .copy-success {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .copy-success.show {
+            opacity: 1;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -381,6 +468,14 @@
             .container {
                 width: 95%;
             }
+            
+            .social-buttons {
+                flex-direction: column;
+            }
+            
+            .social-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -399,6 +494,9 @@
     </header>
 
     <div id="page-content"></div>
+    
+    <!-- Copy success message element -->
+    <div id="copy-success-message" class="copy-success">Text copied to clipboard!</div>
 
     <footer>
         <div class="container">
@@ -407,12 +505,72 @@
                     <img src="images/techbridge-symbol.png" alt="TechBridge Logo" height="60">
                 </div>
                 <p>&copy; 2025 House of Friendship. All rights reserved.</p>
-                <p>Together, we can empower our community and transform lives.</p>
+                <p>We are stronger together.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Social media sharing functions
+        // Array of post content
+        const socialPosts = [
+            {
+                title: "Support Local Communities with Tech Donations!",
+                text: "Thousands of community members in Waterloo Region rely on technology to improve their lives -- from job searches to homework. But outdated devices at House of Friendship's community centers limit access to these critical tools. We need your help! Donate your decommissioned laptops or tablets today and empower our neighbors to succeed. Join us in reaching our goal and make a lasting impact on local youth and families!",
+                hashtags: "#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange",
+                url: window.location.href
+            },
+            {
+                title: "Outdated Technology = Missed Opportunities",
+                text: "At House of Friendship's community centres, youth are sharing outdated computers, slowing down their work and limiting their learning. We're looking for technology leaders like YOU to help us reach our goal of providing 175 updated laptops and tablets to ensure students across all 7 community centers have the tools they need to succeed. Donate today and help make technology accessible for all!",
+                hashtags: "#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange",
+                url: window.location.href
+            }
+        ];
+        
+        // Share on Facebook
+        function shareOnFacebook(postIndex) {
+            const post = socialPosts[postIndex];
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(post.url)}&quote=${encodeURIComponent(post.title + ' ' + post.text + ' ' + post.hashtags)}`;
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+        
+        // Share on Twitter
+        function shareOnTwitter(postIndex) {
+            const post = socialPosts[postIndex];
+            // Twitter has character limits, so keep it concise
+            const tweetText = post.title + ' ' + post.hashtags;
+            const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(post.url)}`;
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+        
+        // Share on LinkedIn
+        function shareOnLinkedIn(postIndex) {
+            const post = socialPosts[postIndex];
+            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(post.url)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.text)}`;
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+        
+        // Copy text to clipboard
+        function copyToClipboard(postIndex) {
+            const post = socialPosts[postIndex];
+            const textToCopy = post.title + '\n\n' + post.text + '\n\n' + post.hashtags;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show success message
+                const successMessage = document.getElementById('copy-success-message');
+                successMessage.classList.add('show');
+                
+                // Hide after 2 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy text to clipboard');
+            });
+        }
+        
         // Determine which page to show based on URL
         const path = window.location.pathname;
         if (path.includes('form.html')) {
@@ -502,7 +660,7 @@
                 
                 // Validate email
                 const emailField = document.getElementById('email');
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
                 const emailGroup = emailField.closest('.form-group');
                 
                 if (!emailPattern.test(emailField.value)) {
@@ -517,7 +675,7 @@
                 const phoneGroup = phoneField.closest('.form-group');
                 
                 // Remove all non-digit characters to check length
-                const phoneDigits = phoneField.value.replace(/\D/g, '');
+                const phoneDigits = phoneField.value.replace(/\\D/g, '');
                 
                 if (phoneDigits.length < 10 || phoneDigits.length > 15) {
                     phoneGroup.classList.add('error');
@@ -533,6 +691,9 @@
             document.getElementById('page-content').innerHTML = `
                 <div class="hero">
                     <div class="container">
+                        <div class="hero-logo">
+                            <img src="images/house-of-friendship-logo.png" alt="House of Friendship Logo">
+                        </div>
                         <h1>Bridge the Digital Divide</h1>
                         <div class="hero-questions">
                             <p>Do you have laptops or tablets gathering dust in your office?</p>
@@ -549,6 +710,21 @@
                         <h2>The Technology Gap in Our Community</h2>
                         <div class="text-block">
                             <p>In today's digital world, technology isn't a luxury—it's essential for education, employment, and connecting with vital services. Yet for many families in Waterloo Region, a computer remains out of reach.</p>
+                        </div>
+                        
+                        <div class="gallery">
+                            <div class="gallery-item">
+                                <img src="images/picture1.jpg" alt="Community members using computers at House of Friendship">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/picture2.jpg" alt="House of Friendship community support">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/picture3.jpg" alt="Children at House of Friendship community center">
+                            </div>
+                        </div>
+                        
+                        <div class="text-block">
                             <p>At House of Friendship's community centres, outdated and shared computers limit opportunities for youth and families trying to complete homework, search for jobs, or access important resources. The technology gap creates real barriers to success.</p>
                             <p>That's where your unused technology can make a difference. The laptop sitting in your storage closet could be the tool that helps a student excel in school or helps a parent find employment.</p>
                         </div>
@@ -591,23 +767,6 @@
                     </div>
                 </section>
 
-                <section>
-                    <div class="container">
-                        <h2>Making a Real Impact</h2>
-                        <div class="gallery">
-                            <div class="gallery-item">
-                                <img src="images/picture1.jpg" alt="Community members using computers at House of Friendship">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/picture2.jpg" alt="House of Friendship community support">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/picture3.jpg" alt="Children at House of Friendship community center">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <section style="background-color: var(--accent);">
                     <div class="container">
                         <h2>Spread the Word</h2>
@@ -616,12 +775,40 @@
                             <p>Thousands of community members in Waterloo Region rely on technology to improve their lives -- from job searches to homework. But outdated devices at House of Friendship's community centers limit access to these critical tools. We need your help! Donate your decommissioned laptops or tablets today and empower our neighbors to succeed.</p>
                             <p>Join us in reaching our goal and make a lasting impact on local youth and families!</p>
                             <p class="hashtags">#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange</p>
+                            <div class="social-buttons">
+                                <button class="social-btn facebook" onclick="shareOnFacebook(0)">
+                                    <i class="fab fa-facebook-f"></i> Share on Facebook
+                                </button>
+                                <button class="social-btn twitter" onclick="shareOnTwitter(0)">
+                                    <i class="fab fa-twitter"></i> Share on Twitter
+                                </button>
+                                <button class="social-btn linkedin" onclick="shareOnLinkedIn(0)">
+                                    <i class="fab fa-linkedin-in"></i> Share on LinkedIn
+                                </button>
+                                <button class="social-btn copy" onclick="copyToClipboard(0)">
+                                    <i class="far fa-copy"></i> Copy Text
+                                </button>
+                            </div>
                         </div>
                         <div class="social-post">
                             <h3>Outdated Technology = Missed Opportunities</h3>
                             <p>At House of Friendship's community centres, youth are sharing outdated computers, slowing down their work and limiting their learning. We're looking for technology leaders like YOU to help us reach our goal of providing 175 updated laptops and tablets to ensure students across all 7 community centers have the tools they need to succeed.</p>
                             <p>Donate today and help make technology accessible for all!</p>
                             <p class="hashtags">#TechBridge #HouseofFriendship #CommunitySupport #TechDonations #TechForChange</p>
+                            <div class="social-buttons">
+                                <button class="social-btn facebook" onclick="shareOnFacebook(1)">
+                                    <i class="fab fa-facebook-f"></i> Share on Facebook
+                                </button>
+                                <button class="social-btn twitter" onclick="shareOnTwitter(1)">
+                                    <i class="fab fa-twitter"></i> Share on Twitter
+                                </button>
+                                <button class="social-btn linkedin" onclick="shareOnLinkedIn(1)">
+                                    <i class="fab fa-linkedin-in"></i> Share on LinkedIn
+                                </button>
+                                <button class="social-btn copy" onclick="copyToClipboard(1)">
+                                    <i class="far fa-copy"></i> Copy Text
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
