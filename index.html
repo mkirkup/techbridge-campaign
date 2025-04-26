@@ -547,7 +547,8 @@
         // Share on LinkedIn
         function shareOnLinkedIn(postIndex) {
             const post = socialPosts[postIndex];
-            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(post.url)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.text)}`;
+            // LinkedIn uses different parameters for sharing
+            const shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(post.url)}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.text)}`;
             window.open(shareUrl, '_blank', 'width=600,height=400');
         }
         
@@ -692,7 +693,7 @@
                 <div class="hero">
                     <div class="container">
                         <div class="hero-logo">
-                            <img src="images/house-of-friendship-logo.png" alt="House of Friendship Logo">
+                            <img src="images/hof-logo.png" alt="House of Friendship Logo">
                         </div>
                         <h1>Bridge the Digital Divide</h1>
                         <div class="hero-questions">
