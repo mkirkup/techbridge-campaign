@@ -661,7 +661,8 @@
                 
                 // Validate email
                 const emailField = document.getElementById('email');
-                const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+                const emailPattern = /^[^\s@]+@[^
+                \\s@]+\\.[^\s@]+$/;
                 const emailGroup = emailField.closest('.form-group');
                 
                 if (!emailPattern.test(emailField.value)) {
