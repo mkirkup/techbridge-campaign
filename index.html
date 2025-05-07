@@ -661,8 +661,7 @@
                 
                 // Validate email
                 const emailField = document.getElementById('email');
-                const emailPattern = /^[^\s@]+@[^
-                \\s@]+\\.[^\s@]+$/;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 const emailGroup = emailField.closest('.form-group');
                 
                 if (!emailPattern.test(emailField.value)) {
@@ -677,7 +676,7 @@
                 const phoneGroup = phoneField.closest('.form-group');
                 
                 // Remove all non-digit characters to check length
-                const phoneDigits = phoneField.value.replace(/\\D/g, '');
+                const phoneDigits = phoneField.value.replace(/\D/g, '');
                 
                 if (phoneDigits.length < 10 || phoneDigits.length > 15) {
                     phoneGroup.classList.add('error');
